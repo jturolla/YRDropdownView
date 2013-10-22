@@ -291,30 +291,31 @@ static YRDropdownView *currentDropdown = nil;
 
 + (BOOL)hideDropdownInView:(UIView *)view
 {
-    return [YRDropdownView hideDropdownInView:view animated:YES];
+    return YES;//[YRDropdownView hideDropdownInView:view animated:YES];
 }
 
 + (BOOL)hideDropdownInView:(UIView *)view animated:(BOOL)animated
 {
-    if (currentDropdown) {
-        [currentDropdown hideUsingAnimation:[NSNumber numberWithBool:animated]];
-        return YES;
-    }
-    
-    UIView *viewToRemove = nil;
-    for (UIView *v in [view subviews]) {
-        if ([v isKindOfClass:[YRDropdownView class]]) {
-            viewToRemove = v;
-        }
-    }
-    if (viewToRemove != nil) {
-        YRDropdownView *dropdown = (YRDropdownView *)viewToRemove;
-        [dropdown hideUsingAnimation:[NSNumber numberWithBool:animated]];
-        return YES;
-    }
-    else {
-        return NO;
-    }
+//    if (currentDropdown) {
+//        [currentDropdown hideUsingAnimation:[NSNumber numberWithBool:animated]];
+//        return YES;
+//    }
+//    
+//    UIView *viewToRemove = nil;
+//    for (UIView *v in [view subviews]) {
+//        if ([v isKindOfClass:[YRDropdownView class]]) {
+//            viewToRemove = v;
+//        }
+//    }
+//    if (viewToRemove != nil) {
+//        YRDropdownView *dropdown = (YRDropdownView *)viewToRemove;
+//        [dropdown hideUsingAnimation:[NSNumber numberWithBool:animated]];
+//        return YES;
+//    }
+//    else {
+//        return NO;
+//    }
+    return YES;
 }
 
 #pragma mark - Methods
@@ -350,25 +351,25 @@ static YRDropdownView *currentDropdown = nil;
 }
 
 - (void)hideUsingAnimation:(NSNumber *)animated {
-    if ([animated boolValue]) {
-        [UIView animateWithDuration:ANIMATION_DURATION
-                              delay:0.0
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             self.alpha = 0.02;
-                             self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y-self.frame.size.height, self.frame.size.width, self.frame.size.height);
-                         }
-                         completion:^(BOOL finished) {
-                             if (finished)
-                             {
-                                 [self done];
-                             }
-                         }];        
-    }
-    else {
-        self.alpha = 0.0f;
-        [self done];
-    }
+//    if ([animated boolValue]) {
+//        [UIView animateWithDuration:ANIMATION_DURATION
+//                              delay:0.0
+//                            options:UIViewAnimationOptionCurveEaseInOut
+//                         animations:^{
+//                             self.alpha = 0.02;
+//                             self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y-self.frame.size.height, self.frame.size.width, self.frame.size.height);
+//                         }
+//                         completion:^(BOOL finished) {
+//                             if (finished)
+//                             {
+//                                 [self done];
+//                             }
+//                         }];        
+//    }
+//    else {
+//        self.alpha = 0.0f;
+//        [self done];
+//    }
 }
 
 - (void)done
@@ -378,14 +379,14 @@ static YRDropdownView *currentDropdown = nil;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if(self.tapBlock)
-    {
-        dispatch_async(_tapQueue, ^{
-            self.tapBlock();
-        });
-    }
+//    if(self.tapBlock)
+//    {
+//        dispatch_async(_tapQueue, ^{
+//            self.tapBlock();
+//        });
+//    }
     
-    [self hideUsingAnimation:[NSNumber numberWithBool:self.shouldAnimate]];
+    //[self hideUsingAnimation:[NSNumber numberWithBool:self.shouldAnimate]];
 }
 
 #pragma mark - Layout
